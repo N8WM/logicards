@@ -1,0 +1,29 @@
+STANFORD LOGIC
+
+Object:
+  Know the number and suit of all 24 cards on the table before the opponent team
+
+Materials:
+  • 2 decks of cards (with different colored backs)
+  • Exactly 4 players
+  • Table with four sides
+
+Setup:
+  • Choose a partner, and sit across the table from them
+  • Take all of the spades out of one deck and remove the king
+  • Take all of the diamonds out of the other deck and remove the king
+  • Shuffle the resulting spades and diamonds from the two decks
+  • Deal 6 cards to each person face down
+  • Everyone can look at their own cards
+  • Order cards from least to greatest, left to right, with ace lowest and queen highest, still face down
+  • The youngest player starts
+
+Rules:
+  • When it is your turn, you may ask your partner to slide you ONE of his/her cards to see, but DO NOT LET ANYONE ELSE SEE
+  • Give the card back to your partner
+  • Now you may guess any of your opponents cards by pointing and saying the number (from either opponent), and if you are
+    correct, they must flip over the card you guessed
+  • Turn moves clockwise
+  • At any point when it is your turn, you may choose to end the game and try to name every card on the table.  Cards are to
+    be flipped over as you guess them, and if you guess incorrectly at any point, your team loses.  But if you guess all
+    cards correctly, your team wins!

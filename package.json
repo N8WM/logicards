@@ -1,6 +1,15 @@
 {
   "name": "logicards",
-  "version": "0.0.1",
-  "description": "An online version of the card game Stanford Logic",
-  "dependencies": {}
+  "version": "0.1.0",
+  "description": "An online version of the game \"Stanford Logic\"",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "n8wm",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "socket.io": "^2.1.1"
+  }
 }

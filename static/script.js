@@ -29,7 +29,7 @@ for(var card=0;card<24;card++){    // distribute 24 cards randomly among players
 }teamA=[bubbleSort(teamA[0]).slice(), bubbleSort(teamA[1]).slice()];    // sort
 teamB=[bubbleSort(teamB[0]).slice(), bubbleSort(teamB[1]).slice()];
 
-document.getElementsByTagName("body")[0].innerHTML += "Player 1: " + teamA[0].toString() + "<br />Player 2: " + teamA[1].toString() + "<br />Player 3: " + teamB[0].toString() + "<br />Player 4: " + teamB[1].toString();
+// document.getElementsByTagName("body")[0].innerHTML += "Player 1: " + teamA[0].toString() + "<br />Player 2: " + teamA[1].toString() + "<br />Player 3: " + teamB[0].toString() + "<br />Player 4: " + teamB[1].toString();
 }
 /*
   Bubble sort method

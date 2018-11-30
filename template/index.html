@@ -2,16 +2,21 @@
 <html>
   <head>
     <title>Logicards</title>
+    <meta name="apple-mobile-web-app-title" content="Logicards">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
     <script src="/script.js"></script>
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body onload="initiate();">
-    <div id="start-page">
+    <div class="focused" id="start-page">
       <div id="start-btns">
-        <button class="start-btn">Join Game</button>
-        <button class="start-btn">New Game</button>
+        <button class="start-btn" ontouchstart="" ontouchend="start()">Join Game</button>
+        <button class="start-btn" ontouchstart="" ontouchend="start()">New Game</button>
       </div>
     </div>
+    <div class="" id="connect-page"></div>
   </body>
 </html>

@@ -76,7 +76,7 @@ function joinroom() {
   startPage.classList.toggle("focused");
   connectPage.classList.toggle("focused");
   document.body.style.backgroundColor = "#1295D7";
-  connectPage.innerHTML = "<div class='centered'><input type='text' id='rcode-inp' placeholder='room code' /><button id='rcode-btn' onmousedown='joinDown()' onmouseup='joinUp()'>Join</button></div>";
+  connectPage.innerHTML = "<div class='centered'><input type='text' id='rcode-inp' placeholder='room code' /><button id='rcode-btn' ontouchstart='joinDown()' ontouchend='joinUp()'>Join</button></div>";
 }
 
 function generateRC() {

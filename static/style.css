@@ -92,7 +92,7 @@ body {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  width: calc(80%-50px);
+  width: calc(80%-100px);
   font-family: sans-serif;
   font-size: 20px;
   color: #555;

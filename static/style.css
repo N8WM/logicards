@@ -88,6 +88,7 @@ body {
   width: 80%;
   height: fit-content;
   transform: translateX(-50%) translateY(-50%);
+  white-space: nowrap;
 }
 
 #rcode-inp {

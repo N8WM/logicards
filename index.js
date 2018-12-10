@@ -14,9 +14,9 @@ io.on('connection', function(socket){
   io.emit('broadcast', ####); // emit an event to all connected sockets
   socket.on('reply', function(){ #### }); // listen to the event
   **/
-  console.log("connection initiated");
+  console.log("load");
 });
 
 app.use(express.static('static'));
 
-http.listen(port, () => console.log('Example app listening on port ${port}!'));
+http.listen(port, () => console.log('Example app listening on port ' + port + '!'));

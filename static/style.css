@@ -129,9 +129,9 @@ body {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   color: #FFF;
-  border: solid 5px #CC0;
+  border: none;
   border-left: none;
-  padding: 15px;
+  padding: 20px;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   /*transform: translateX(-5px);*/
   cursor: pointer;

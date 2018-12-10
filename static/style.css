@@ -93,8 +93,6 @@ body {
 }
 
 #rcode-inp {
-  display: block;
-  float: left;
   box-sizing: border-box;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -122,8 +120,6 @@ body {
 }
 
 #rcode-btn {
-  display: block;
-  float: left;
   box-sizing: border-box;
   font-family: sans-serif;
   font-size: 20px;

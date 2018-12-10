@@ -93,11 +93,12 @@ body {
 }
 
 #rcode-inp {
+  display: block;
+  float: left;
   box-sizing: border-box;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  /*width: calc(100% - 107px);*/
   font-family: sans-serif;
   font-size: 20px;
   color: #555;
@@ -120,6 +121,8 @@ body {
 }
 
 #rcode-btn {
+  display: block;
+  float: left;
   box-sizing: border-box;
   font-family: sans-serif;
   font-size: 20px;
@@ -132,7 +135,6 @@ body {
   border-left: none;
   padding: 20px;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
-  /*transform: translateX(-5px);*/
   cursor: pointer;
   transition: 0.2s;
 }

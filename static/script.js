@@ -30,7 +30,7 @@ function initiate() {
     cnumbers[cnum][0]=true;
   }teamA=[bubbleSort(teamA[0]).slice(), bubbleSort(teamA[1]).slice()];    // sort
   teamB=[bubbleSort(teamB[0]).slice(), bubbleSort(teamB[1]).slice()];
-
+  document.getElementById("rcode-inp").style.width=document.getElementById("rcode-div").offsetWidth-document.getElementById("rcode-btn").offsetWidth-1+"px";
   // document.getElementById("connect-page").innerHTML += "<div style='position:absolute;font-family:sans-serif;line-height:20px;width:fit-content;padding:20px;border-radius:3px;left:50%;top:50%;transform:translateX(-50%) translateY(-50%);background-color:#AA0;color:#FFF;'>Player 1: " + teamA[0].toString() + "<br />Player 2: " + teamA[1].toString() + "<br />Player 3: " + teamB[0].toString() + "<br />Player 4: " + teamB[1].toString() + "</div>";
 }
 /*
@@ -60,26 +60,18 @@ function arrEqual(arr1, arr2) {
 }
 
 function newroom() {
-  var startPage = document.getElementById("start-page");
-  var connectPage = document.getElementById("connect-page");
-  startPage.classList.toggle("focused");
-  connectPage.classList.toggle("focused");
+  var rcodeSpan = document.getElementsByClassName("rcode-span");
+  focusNew();
   document.body.style.backgroundColor = "#CC0";
   roomCode = generateRC();
-  connectPage.innerHTML = "<div style='text-align:center;position:absolute;font-family:sans-serif;line-height:20px;width:fit-content;padding:20px;border-radius:3px;left:50%;top:50px;transform:translateX(-50%);background-color:#AA0;color:#FFF;'><span style='font-weight: 900;'>Room Code:</span><br /><br />" + roomCode + "<br /><br />Waiting for players...</div>";
+  for (var i = 0; i < rcodeSpan.length; i++) {
+    rcodeSpan[i].innerHTML = roomCode;
+  }
 }
 
 function joinroom() {
-  var startPage = document.getElementById("start-page");
-  var connectPage = document.getElementById("connect-page");
-  startPage.classList.toggle("focused");
-  connectPage.classList.toggle("focused");
+  focusJoin();
   document.body.style.backgroundColor = "#1295D7";
-  connectPage.innerHTML = "<div id='rcode-div'><input type='text' id='rcode-inp' placeholder='room code' /><button id='rcode-btn' ontouchstart='joinDown()' ontouchend='joinUp()'>Join</button></div>";
-  var inp = document.getElementById("rcode-inp");
-  var btn = document.getElementById("rcode-btn");
-  var div = document.getElementById("rcode-div");
-  inp.style.width = div.offsetWidth - btn.offsetWidth - 1 + "px";
 }
 
 function generateRC() {
@@ -100,10 +92,51 @@ function joinUp() {
   var inp = document.getElementById("rcode-inp");
   var btn = document.getElementById("rcode-btn");
   var div = document.getElementById("rcode-div");
+  var rcodeSpan = document.getElementsByClassName("rcode-span");
   inp.style.borderColor = "#CC0";
   btn.style.borderColor = "#CC0";
   btn.style.backgroundColor = "#CC0";
   roomCode = inp.value;
-  btn.innerHTML = inp.value;
-  inp.style.width = div.offsetWidth - btn.offsetWidth - 1 + "px";
+  for (var i = 0; i < rcodeSpan.length; i++) {
+    rcodeSpan[i].innerHTML = roomCode;
+  }
+  connect();
+}
+
+function connect() {
+  focusConnect();
+  document.body.style.backgroundColor = "#CC0";
+}
+
+function focusJoin() {
+  var startPage = document.getElementById("start-page");
+  var newPage = document.getElementById("new-page");
+  var joinPage = document.getElementById("join-page");
+  var connectPage = document.getElementById("connect-page");
+  startPage.classList.remove("focused");
+  newPage.classList.remove("focused");
+  connectPage.classList.remove("focused");
+  joinPage.classList.add("focused");
+}
+
+function focusNew() {
+  var startPage = document.getElementById("start-page");
+  var newPage = document.getElementById("new-page");
+  var joinPage = document.getElementById("join-page");
+  var connectPage = document.getElementById("connect-page");
+  startPage.classList.remove("focused");
+  joinPage.classList.remove("focused");
+  connectPage.classList.remove("focused");
+  newPage.classList.add("focused");
+}
+
+function focusConnect() {
+  var startPage = document.getElementById("start-page");
+  var newPage = document.getElementById("new-page");
+  var joinPage = document.getElementById("join-page");
+  var connectPage = document.getElementById("connect-page");
+  startPage.classList.remove("focused");
+  newPage.classList.remove("focused");
+  joinPage.classList.remove("focused");
+  connectPage.classList.add("focused");
 }

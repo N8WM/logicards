@@ -13,10 +13,13 @@
   <body onload="initiate();">
     <div class="focused" id="start-page">
       <div id="start-btns">
-        <button class="start-btn" ontouchstart="" ontouchend="joinroom()">Join Game</button>
         <button class="start-btn" ontouchstart="" ontouchend="newroom()">New Game</button>
+        <button class="start-btn" ontouchstart="" ontouchend="joinroom()">Join Game</button>
       </div>
     </div>
-    <div class="" id="connect-page"></div>
+    <div class="" id="new-page"><div class="connect-div"><span style="font-weight: 900;">Room Code:</span><br /><br /><span class="rcode-span"></span><br /><br />Waiting for players...</div></div>
+    <div class="" id="join-page"><div id="rcode-div"><input type="text" id="rcode-inp" placeholder="room code" /><button id="rcode-btn" ontouchstart="joinDown()" ontouchend="joinUp()">Join</button></div></div>
+    <div class="" id="connect-page"><div class="connect-div"><span style="font-weight: 900;">Room Code:</span><br /><br /><span class="rcode-span"></span><br /><br />Waiting for players...</div></div>
+
   </body>
 </html>

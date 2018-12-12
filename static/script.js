@@ -84,7 +84,6 @@ function joinDown() {
   var inp = document.getElementById("rcode-inp");
   var btn = document.getElementById("rcode-btn");
   inp.style.borderColor = "#AA0";
-  btn.style.borderColor = "#AA0";
   btn.style.backgroundColor = "#AA0";
 }
 
@@ -94,7 +93,6 @@ function joinUp() {
   var div = document.getElementById("rcode-div");
   var rcodeSpan = document.getElementsByClassName("rcode-span");
   inp.style.borderColor = "#CC0";
-  btn.style.borderColor = "#CC0";
   btn.style.backgroundColor = "#CC0";
   roomCode = inp.value;
   for (var i = 0; i < rcodeSpan.length; i++) {

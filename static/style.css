@@ -131,6 +131,7 @@ body {
   border-bottom-left-radius: 5px;
   border: solid 5px #CC0;
   border-right: none;
+  margin: 0;
   padding: 15px;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   transition: border 0.2s;
@@ -155,6 +156,7 @@ body {
   color: #FFF;
   border: none;
   border-left: none;
+  margin: 0;
   padding: 20px;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   cursor: pointer;

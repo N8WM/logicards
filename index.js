@@ -19,6 +19,14 @@ io.on('connection', function(socket){
     rooms.push(code);
     socket.emit('message');
   });
+  socket.on('join room', function(code){
+    if (rooms.includes(code)) {
+      socket.emit('code verified');
+    }
+    else {
+      socket.emit('code rejected');
+    }
+  });
 
   console.log("load");
 });

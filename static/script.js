@@ -64,10 +64,18 @@ function newroom() {
   focusNew();
   document.body.style.backgroundColor = "#CC0";
   roomCode = generateRC();
+  socket.emit('new room code', '{ "code":"'+roomCode+'" }');
   for (var i = 0; i < rcodeSpan.length; i++) {
     rcodeSpan[i].innerHTML = roomCode;
   }
 }
+
+socket.on('message', function(){
+  var rcodeSpan = document.getElementsByClassName("rcode-span");
+  for (var i = 0; i < rcodeSpan.length; i++) {
+    rcodeSpan[i].innerHTML += "<br />Connected";
+  }
+});
 
 function joinroom() {
   focusJoin();

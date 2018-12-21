@@ -103,10 +103,16 @@ function joinUp() {
   inp.style.borderColor = "#CC0";
   btn.style.backgroundColor = "#CC0";
   roomCode = inp.value;
-  for (var i = 0; i < rcodeSpan.length; i++) {
-    rcodeSpan[i].innerHTML = roomCode;
-  }
-  connect();
+  socket.emit('join room', '{ "code":"'+roomCode+'" }');
+  socket.on('code verified', function(){
+    for (var i = 0; i < rcodeSpan.length; i++) {
+      rcodeSpan[i].innerHTML = roomCode;
+    }
+    connect();
+  });
+  socket.on('code rejected', function(){
+    inp.value = "";
+  });
 }
 
 function connect() {

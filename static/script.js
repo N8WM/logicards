@@ -18,6 +18,7 @@ var teamB = [[0, 0, 0, 0, 0, 0],
              [0, 0, 0, 0, 0, 0]];
 
 var roomCode = 0;
+var name = "player";
 
 function initiate() {
   for(var card=0;card<24;card++){    // distribute 24 cards randomly among players
@@ -61,21 +62,16 @@ function arrEqual(arr1, arr2) {
 
 function newroom() {
   var rcodeSpan = document.getElementsByClassName("rcode-span");
-  focusNew();
   document.body.style.backgroundColor = "#CC0";
   roomCode = generateRC();
   socket.emit('new room code', '{ "code":"'+roomCode+'" }');
   for (var i = 0; i < rcodeSpan.length; i++) {
     rcodeSpan[i].innerHTML = roomCode;
   }
+  socket.on('room verified', function(){
+    focusName();
+  });
 }
-
-socket.on('message', function(){
-  var rcodeSpan = document.getElementsByClassName("rcode-span");
-  for (var i = 0; i < rcodeSpan.length; i++) {
-    rcodeSpan[i].innerHTML += "<br />Connected";
-  }
-});
 
 function joinroom() {
   focusJoin();
@@ -95,22 +91,49 @@ function joinDown() {
   btn.style.backgroundColor = "#AA0";
 }
 
+function nameDown() {
+  var inp = document.getElementById("name-inp");
+  var btn = document.getElementById("name-btn");
+  inp.style.borderColor = "#AA0";
+  btn.style.backgroundColor = "#AA0";
+}
+
 function joinUp() {
   var inp = document.getElementById("rcode-inp");
   var btn = document.getElementById("rcode-btn");
   var div = document.getElementById("rcode-div");
   var rcodeSpan = document.getElementsByClassName("rcode-span");
-  inp.style.borderColor = "#CC0";
-  btn.style.backgroundColor = "#CC0";
   roomCode = inp.value;
   socket.emit('join room', '{ "code":"'+roomCode+'" }');
   socket.on('code verified', function(){
     for (var i = 0; i < rcodeSpan.length; i++) {
       rcodeSpan[i].innerHTML = roomCode;
     }
-    connect();
+    inp.style.borderColor = "#CC0";
+    btn.style.backgroundColor = "#CC0";
+    focusName();
   });
   socket.on('code rejected', function(){
+    inp.style.borderColor = "#C00";
+    btn.style.backgroundColor = "#C00";
+    inp.value = "";
+  });
+}
+
+function nameUp() {
+  var inp = document.getElementById("name-inp");
+  var btn = document.getElementById("name-btn");
+  var div = document.getElementById("name-div");
+  name = inp.value;
+  socket.emit('new player', '{ "name":"'+name+'" }');
+  socket.on('name verified', function(){
+    inp.style.borderColor = "#CC0";
+    btn.style.backgroundColor = "#CC0";
+    connect();
+  });
+  socket.on('name rejected', function(){
+    inp.style.borderColor = "#C00";
+    btn.style.backgroundColor = "#C00";
     inp.value = "";
   });
 }
@@ -122,33 +145,33 @@ function connect() {
 
 function focusJoin() {
   var startPage = document.getElementById("start-page");
-  var newPage = document.getElementById("new-page");
+  var namePage = document.getElementById("name-page");
   var joinPage = document.getElementById("join-page");
   var connectPage = document.getElementById("connect-page");
   startPage.classList.remove("focused");
-  newPage.classList.remove("focused");
+  namePage.classList.remove("focused");
   connectPage.classList.remove("focused");
   joinPage.classList.add("focused");
 }
 
-function focusNew() {
+function focusName() {
   var startPage = document.getElementById("start-page");
-  var newPage = document.getElementById("new-page");
+  var namePage = document.getElementById("name-page");
   var joinPage = document.getElementById("join-page");
   var connectPage = document.getElementById("connect-page");
   startPage.classList.remove("focused");
   joinPage.classList.remove("focused");
   connectPage.classList.remove("focused");
-  newPage.classList.add("focused");
+  namePage.classList.add("focused");
 }
 
 function focusConnect() {
   var startPage = document.getElementById("start-page");
-  var newPage = document.getElementById("new-page");
+  var namePage = document.getElementById("name-page");
   var joinPage = document.getElementById("join-page");
   var connectPage = document.getElementById("connect-page");
   startPage.classList.remove("focused");
-  newPage.classList.remove("focused");
+  namePage.classList.remove("focused");
   joinPage.classList.remove("focused");
   connectPage.classList.add("focused");
 }

@@ -105,7 +105,7 @@ body {
   z-index: 2;
 }
 
-#rcode-div {
+#rcode-div, #name-div {
   box-sizing: border-box;
   position: absolute;
   left: 50%;
@@ -117,7 +117,7 @@ body {
   white-space: nowrap;
 }
 
-#rcode-inp {
+#rcode-inp, #name-inp {
   box-sizing: border-box;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -137,15 +137,15 @@ body {
   transition: border 0.2s;
 }
 
-#rcode-inp:focus {
+#rcode-inp:focus, #name-inp:focus {
   outline: none;
 }
 
-#rcode-inp::placeholder {
+#rcode-inp::placeholder, #name-inp::placeholder {
   color: #AAA;
 }
 
-#rcode-btn {
+#rcode-btn, #name-btn {
   box-sizing: border-box;
   font-family: sans-serif;
   font-size: 20px;
@@ -162,7 +162,7 @@ body {
   transition: 0.2s;
 }
 
-#rcode-btn:focus {
+#rcode-btn:focus, #name-btn:focus {
   outline: none;
 }
 

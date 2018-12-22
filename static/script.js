@@ -62,7 +62,6 @@ function arrEqual(arr1, arr2) {
 
 function newroom() {
   var rcodeSpan = document.getElementsByClassName("rcode-span");
-  document.body.style.backgroundColor = "#CC0";
   roomCode = generateRC();
   socket.emit('new room code', '{ "code":"'+roomCode+'" }');
   for (var i = 0; i < rcodeSpan.length; i++) {
@@ -103,7 +102,7 @@ function joinUp() {
   var btn = document.getElementById("rcode-btn");
   var div = document.getElementById("rcode-div");
   var rcodeSpan = document.getElementsByClassName("rcode-span");
-  roomCode = inp.value;
+  roomCode = inp.value.toUpperCase();
   socket.emit('join room', '{ "code":"'+roomCode+'" }');
   socket.on('code verified', function(){
     for (var i = 0; i < rcodeSpan.length; i++) {
@@ -124,11 +123,12 @@ function nameUp() {
   var inp = document.getElementById("name-inp");
   var btn = document.getElementById("name-btn");
   var div = document.getElementById("name-div");
-  name = inp.value;
+  name = inp.value.toUpperCase();
   socket.emit('new player', '{ "name":"'+name+'" }');
   socket.on('name verified', function(){
     inp.style.borderColor = "#CC0";
     btn.style.backgroundColor = "#CC0";
+    document.body.style.backgroundColor = "#CC0";
     connect();
   });
   socket.on('name rejected', function(){

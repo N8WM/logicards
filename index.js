@@ -37,7 +37,7 @@ io.on('connection', function(socket){
     else {
       names.push(name.toUpperCase());
       rooms[codes.indexOf(code.toUpperCase())].push(name.toUpperCase());
-      socket.emit('name verified', '{ "players":"'+(rooms[codes.indexOf(code)].length > 1)?(rooms[codes.indexOf(code)].slice(1,rooms[codes.indexOf(code)].length).toString()):""+'" }');
+      socket.emit('name verified'/*, '{ "players":"'+(rooms[codes.indexOf(code)].length > 1)?(rooms[codes.indexOf(code)].slice(1,rooms[codes.indexOf(code)].length).toString()):""+'" }'*/);
     }
   });
 

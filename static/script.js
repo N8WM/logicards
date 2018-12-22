@@ -19,6 +19,7 @@ var teamB = [[0, 0, 0, 0, 0, 0],
 
 var roomCode = 0;
 var name = "player";
+var names = [];
 
 function initiate() {
   for(var card=0;card<24;card++){    // distribute 24 cards randomly among players
@@ -124,8 +125,9 @@ function nameUp() {
   var btn = document.getElementById("name-btn");
   var div = document.getElementById("name-div");
   name = inp.value.toUpperCase();
-  socket.emit('new player', '{ "name":"'+name+'" }');
-  socket.on('name verified', function(){
+  socket.emit('new player', '{ "name":"'+name+'","code":"'+roomCode+'" }');
+  socket.on('name verified', function(ns){
+    names = ns.split(",");
     inp.style.borderColor = "#CC0";
     btn.style.backgroundColor = "#CC0";
     document.body.style.backgroundColor = "#CC0";
@@ -174,4 +176,5 @@ function focusConnect() {
   namePage.classList.remove("focused");
   joinPage.classList.remove("focused");
   connectPage.classList.add("focused");
+  connectPage.innerHTML += names;
 }

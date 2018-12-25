@@ -36,7 +36,7 @@ io.on('connection', function(socket){
     }
   });
   socket.on('new player', function(name, code){
-    if (names.includes(name.toUpperCase()) || name.indexOf(",") >== 0) {
+    if (names.includes(name.toUpperCase()) || name.indexOf(",") >= 0) {
       socket.emit('name rejected');
     }
     else {

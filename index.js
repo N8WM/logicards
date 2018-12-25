@@ -36,6 +36,7 @@ io.on('connection', function(socket){
     }
   });
   socket.on('new player', function(name, code){
+    name = "bob";
     if (names.includes(name.toUpperCase())/* || name.indexOf(",") >= 0*/) {
       socket.emit('name rejected');
     }
@@ -51,7 +52,7 @@ io.on('connection', function(socket){
         }
         arrStr += names[names.length - 1];
       }
-      socket.emit('name verified', '{ "players":"'+arrStr+'" }');
+      socket.emit('name verified', '{ "ns":"'+arrStr+'" }');
     }
   });
 

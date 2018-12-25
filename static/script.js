@@ -62,12 +62,10 @@ function arrEqual(arr1, arr2) {
 }
 
 function newroom() {
-  var rcodeSpan = document.getElementsByClassName("rcode-span");
+  var rcodeSpan = document.getElementById("rcode-span");
   roomCode = generateRC();
   socket.emit('new room code', '{ "code":"'+roomCode+'" }');
-  for (var i = 0; i < rcodeSpan.length; i++) {
-    rcodeSpan[i].innerHTML = roomCode;
-  }
+  rcodeSpan.innerHTML = roomCode;
   socket.on('room verified', function(){
     focusName();
   });
@@ -81,7 +79,7 @@ function joinroom() {
 function generateRC() {
   var c = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
   var n = ['0','1','2','3','4','5','6','7','8','9'];
-  return n[Math.floor(Math.random()*10)]+c[Math.floor(Math.random()*26)]+c[Math.floor(Math.random()*26)]+c[Math.floor(Math.random()*26)]+n[Math.floor(Math.random()*10)]+n[Math.floor(Math.random()*10)]+n[Math.floor(Math.random()*10)];
+  return c[Math.floor(Math.random()*26)]+c[Math.floor(Math.random()*26)]+c[Math.floor(Math.random()*26)]+c[Math.floor(Math.random()*26)]+c[Math.floor(Math.random()*26)]+n[Math.floor(Math.random()*10)]+n[Math.floor(Math.random()*10)];
 }
 
 function joinDown() {
@@ -102,13 +100,11 @@ function joinUp() {
   var inp = document.getElementById("rcode-inp");
   var btn = document.getElementById("rcode-btn");
   var div = document.getElementById("rcode-div");
-  var rcodeSpan = document.getElementsByClassName("rcode-span");
+  var rcodeSpan = document.getElementById("rcode-span");
   roomCode = inp.value.toUpperCase();
   socket.emit('join room', '{ "code":"'+roomCode+'" }');
   socket.on('code verified', function(){
-    for (var i = 0; i < rcodeSpan.length; i++) {
-      rcodeSpan[i].innerHTML = roomCode;
-    }
+    rcodeSpan.innerHTML = roomCode;
     inp.style.borderColor = "#CC0";
     btn.style.backgroundColor = "#CC0";
     focusName();
@@ -126,11 +122,17 @@ function nameUp() {
   var div = document.getElementById("name-div");
   name = inp.value.toUpperCase();
   socket.emit('new player', '{ "name":"'+name+'","code":"'+roomCode+'" }');
-  socket.on('name verified', function(/*ns*/){
-    //names = ns.split(",");
+  socket.on('name verified', function(ns){
+    names = ns.split(",");
     inp.style.borderColor = "#CC0";
     btn.style.backgroundColor = "#CC0";
     document.body.style.backgroundColor = "#CC0";
+    var jPlayersStr = "";
+    for (var i = 0; i < names.length; i++) {
+      jPlayersStr += "<div class='connect-div'>" + names[i] + "</div>";
+    }
+    var jPlayers = document.getElementById("j-players");
+    jPlayers.innerHTML = jPlayersStr;
     connect();
   });
   socket.on('name rejected', function(){

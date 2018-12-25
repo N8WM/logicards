@@ -3,9 +3,9 @@ const app = express();
 const port = /*8080;*/ process.env.PORT;
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var rooms = [];
 var codes = [];
 var names = [];
+var nameToCode = [];
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/template/index.html');
@@ -19,11 +19,16 @@ io.on('connection', function(socket){
   **/
   socket.on('new room code', function(code){
     codes.push(code.toUpperCase());
-    rooms.push([code.toUpperCase()]);
     socket.emit('room verified');
   });
   socket.on('join room', function(code){
-    if (codes.includes(code.toUpperCase()) && rooms[codes.indexOf(code.toUpperCase())].length < 4) {
+    var pCount = 0;
+    for (var i = 0; i < names.length; i++) {
+      if (nameToCode[i] === codes.indexOf(code.toUpperCase())) {
+        pCount++;
+      }
+    }
+    if (codes.includes(code.toUpperCase()) && pCount < 4) {
       socket.emit('code verified');
     }
     else {
@@ -31,13 +36,22 @@ io.on('connection', function(socket){
     }
   });
   socket.on('new player', function(name, code){
-    if (names.includes(name.toUpperCase())) {
+    if (names.includes(name.toUpperCase()) || name.indexOf(",") !== -1) {
       socket.emit('name rejected');
     }
     else {
       names.push(name.toUpperCase());
-      //rooms[codes.indexOf(code.toUpperCase())].push(name.toUpperCase());
-      socket.emit('name verified'/*, '{ "players":"'+(rooms[codes.indexOf(code)].length > 1)?(rooms[codes.indexOf(code)].slice(1,rooms[codes.indexOf(code)].length).toString()):""+'" }'*/);
+      nameToCode.push(codes.indexOf(code.toUpperCase()));
+      var arrStr = "";
+      if (names.length > 0) {
+        for (var n = 0; n < names.length - 1; n++) {
+          if (nameToCode[n] === codes.indexOf(code.toUpperCase())) {
+            arrStr += names[n] + ",";
+          }
+        }
+        arrStr += names[names.length - 1];
+      }
+      socket.emit('name verified', '{ "players":"'+arrStr+'" }'*/);
     }
   });
 

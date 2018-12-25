@@ -3,7 +3,7 @@ const app = express();
 const port = /*8080;*/ process.env.PORT;
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var codes = ["N"];
+var codes = [];
 var names = [];
 var nameToCode = [];
 

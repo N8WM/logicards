@@ -3,7 +3,7 @@ const app = express();
 const port = /*8080;*/ process.env.PORT;
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var codes = [];
+var codes = [""];
 var names = [];
 var nameToCode = [];
 
@@ -36,7 +36,6 @@ io.on('connection', function(socket){
     }
   });
   socket.on('new player', function(name, code){
-    name = "bob";
     if (names.includes(name.toUpperCase())/* || name.indexOf(",") >= 0*/) {
       socket.emit('name rejected');
     }

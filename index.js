@@ -51,7 +51,7 @@ io.on('connection', function(socket){
         }
         arrStr += names[names.length - 1];
       }
-      socket.emit('name verified', '{ "players":"'+arrStr+'" }'*/);
+      socket.emit('name verified', '{ "players":"'+arrStr+'" }');
     }
   });
 

@@ -123,6 +123,7 @@ function nameUp() {
   name = inp.value.toUpperCase();
   socket.emit('new player', '{ "name":"'+name+'","code":"'+roomCode+'" }');
   socket.on('name verified', function(ns){
+    connect();
     names = ns.split(",");
     inp.style.borderColor = "#CC0";
     btn.style.backgroundColor = "#CC0";
@@ -133,7 +134,7 @@ function nameUp() {
     }
     var jPlayers = document.getElementById("j-players");
     jPlayers.innerHTML = jPlayersStr;
-    connect();
+    // connect();
   });
   socket.on('name rejected', function(){
     inp.style.borderColor = "#C00";

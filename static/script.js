@@ -122,8 +122,8 @@ function nameUp() {
   var div = document.getElementById("name-div");
   name = inp.value.toUpperCase();
   socket.emit('new player', '{ "name":"'+name+'","code":"'+roomCode+'" }');
+  connect();
   socket.on('name verified', function(ns){
-    connect();
     names = ns.split(",");
     inp.style.borderColor = "#CC0";
     btn.style.backgroundColor = "#CC0";

@@ -11,5 +11,14 @@
   "dependencies": {
     "express": "^4.16.4",
     "socket.io": "^2.1.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/N8WM/logicards.git"
+  },
+  "bugs": {
+    "url": "https://github.com/N8WM/logicards/issues"
+  },
+  "homepage": "https://github.com/N8WM/logicards#readme"
 }
